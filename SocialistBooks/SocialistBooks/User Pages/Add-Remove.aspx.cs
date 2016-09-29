@@ -8,11 +8,19 @@ using Microsoft.AspNet.Identity;
 
 namespace SocialistBooks.Account
 {
+    
+
+
     public partial class Add_Remove : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            String userID = User.Identity.GetUserId();
+            SqlDataSource2.SelectCommand = String.Format(@"SELECT MasterBookList.BookID, ISBN, Title, Author FROM MasterBookList 
+                                                           INNER JOIN UserBooks 
+                                                           ON MasterBookList.BookID = UserBooks.BookId
+                                                           WHERE UserBooks.UId = '{0}'", userID);
+             
         }
 
         protected void BookLookUpButton_Click(object sender, EventArgs e)
@@ -51,6 +59,14 @@ namespace SocialistBooks.Account
                 SqlDataSource1.InsertCommand
                 = String.Format("INSERT INTO [UserBooks] (UId, BookId) VALUES('{0}','{1}')", userID, BookID);
                 SqlDataSource1.Insert();
+            }
+        }
+
+        protected void RemoveBookFromUserList(object sender, GridViewCommandEventArgs e)
+        {
+            if(e.CommandName == "RemoveBook")
+            {
+
             }
         }
     }

@@ -61,6 +61,42 @@
     <div>
 
 
+        <br />
+        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" 
+            BorderStyle="Solid" BorderWidth="1px" CellPadding="3" DataKeyNames="BookID" DataSourceID="SqlDataSource2" 
+            ForeColor="Black" GridLines="Vertical"
+            OnRowCommand ="RemoveBookFromUserList">
+            <AlternatingRowStyle BackColor="#CCCCCC" />
+            <Columns>
+                <asp:ButtonField ButtonType="Button" Text="Remove" CommandName="RemoveBook" />
+                <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title" />
+                <asp:BoundField DataField="Author" HeaderText="Author" SortExpression="Author" />
+                <asp:BoundField DataField="ISBN" HeaderText="ISBN" SortExpression="ISBN" />
+                <asp:BoundField DataField="BookID" HeaderText="BookID" InsertVisible="False" ReadOnly="True" SortExpression="BookID" Visible="False" />
+            </Columns>
+            <FooterStyle BackColor="#CCCCCC" />
+            <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+            <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+            <SortedAscendingHeaderStyle BackColor="#808080" />
+            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+            <SortedDescendingHeaderStyle BackColor="#383838" />
+        </asp:GridView>
+        <br />
+        <br />
+        <br />
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" 
+            >
+
+        </asp:SqlDataSource>
+        <br />
+        <br />
+        <br />
+        
+
+
     </div>
 
 
