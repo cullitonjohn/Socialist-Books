@@ -27,6 +27,24 @@
         <br />
         <br />
         <br />
+        <asp:GridView ID="GridView1" runat="server" BackColor="White" 
+            BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" 
+            CellPadding="3" DataSourceID="SqlDataSource1" 
+            OnRowCommand ="AddBookToUserList"
+            ForeColor="Black" GridLines="Vertical">
+            <AlternatingRowStyle BackColor="#CCCCCC" />
+            <Columns>
+                <asp:ButtonField ButtonType="Button" CommandName="AddBook" Text="Add" />
+            </Columns>
+            <FooterStyle BackColor="#CCCCCC" />
+            <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+            <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+            <SortedAscendingHeaderStyle BackColor="Gray" />
+            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+            <SortedDescendingHeaderStyle BackColor="#383838" />
+        </asp:GridView>
         <br />
         
         <br />
@@ -35,111 +53,7 @@
     <div>
 
 
-        <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1">
-            <AlternatingItemTemplate>
-                <tr style="">
-                    <td>
-                        <asp:Label ID="ISBNLabel" runat="server" Text='<%# Eval("ISBN") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="AuthorLabel" runat="server" Text='<%# Eval("Author") %>' />
-                    </td>
-                </tr>
-            </AlternatingItemTemplate>
-            <EditItemTemplate>
-                <tr style="">
-                    <td>
-                        <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
-                        <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="ISBNTextBox" runat="server" Text='<%# Bind("ISBN") %>' />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="TitleTextBox" runat="server" Text='<%# Bind("Title") %>' />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="AuthorTextBox" runat="server" Text='<%# Bind("Author") %>' />
-                    </td>
-                </tr>
-            </EditItemTemplate>
-            <EmptyDataTemplate>
-                <table runat="server" style="">
-                    <tr>
-                        <td>No data was returned.</td>
-                    </tr>
-                </table>
-            </EmptyDataTemplate>
-            <InsertItemTemplate>
-                <tr style="">
-                    <td>
-                        <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
-                        <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="ISBNTextBox" runat="server" Text='<%# Bind("ISBN") %>' />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="TitleTextBox" runat="server" Text='<%# Bind("Title") %>' />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="AuthorTextBox" runat="server" Text='<%# Bind("Author") %>' />
-                    </td>
-                </tr>
-            </InsertItemTemplate>
-            <ItemTemplate>
-                <tr style="">
-                    <td>
-                        <asp:Label ID="ISBNLabel" runat="server" Text='<%# Eval("ISBN") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="AuthorLabel" runat="server" Text='<%# Eval("Author") %>' />
-                    </td>
-                </tr>
-            </ItemTemplate>
-            <LayoutTemplate>
-                <table runat="server">
-                    <tr runat="server">
-                        <td runat="server">
-                            <table id="itemPlaceholderContainer" runat="server" border="0" style="">
-                                <tr runat="server" style="">
-                                    <th runat="server">ISBN</th>
-                                    <th runat="server">Title</th>
-                                    <th runat="server">Author</th>
-                                </tr>
-                                <tr id="itemPlaceholder" runat="server">
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr runat="server">
-                        <td runat="server" style=""></td>
-                    </tr>
-                </table>
-            </LayoutTemplate>
-            <SelectedItemTemplate>
-                <tr style="">
-                    <td>
-                        <asp:Label ID="ISBNLabel" runat="server" Text='<%# Eval("ISBN") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="AuthorLabel" runat="server" Text='<%# Eval("Author") %>' />
-                    </td>
-                </tr>
-            </SelectedItemTemplate>
-        </asp:ListView>
-
-
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" >
         </asp:SqlDataSource>
     </div>
     <hr />
